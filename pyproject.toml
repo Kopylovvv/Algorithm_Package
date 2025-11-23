@@ -17,20 +17,19 @@ dev = [
 
 [tool.pytest]
 pythonpath = ["src"]
+testpaths = ["tests"]
 addopts = [
   "--cov=algopack",
-  "--cov-branch",
   "--cov-report=term-missing",
-  "-q",
 ]
 
 [tool.coverage.run]
 source = ["algopack"]
 branch = true
-omit = ["*/__init__.py", ]
 
 
 [tool.coverage.report]
 show_missing = true
 fail_under = 80
+omit = ["*/__init__.py", ]
 
