@@ -9,16 +9,14 @@ from algopack.math_funcs import (
 
 
 @pytest.mark.parametrize("n", [0, 1, 2, 5, 6, 10, 20, 50, 100])
-def test_factorial_iterative_and_recursive_match_math(n: int) -> None:
-    """факториалы совпадают и равны math.factorial."""
+def test_factorial(n: int) -> None:
     expected = math.factorial(n)
     assert factorial(n) == expected
     assert factorial_recursive(n) == expected
 
 
 @pytest.mark.parametrize("n", [-1, -5, -100])
-def test_factorial_negative_raises_value_error(n: int) -> None:
-    """ValueError для отрицательных n."""
+def test_factorial_raises(n: int) -> None:
     with pytest.raises(ValueError):
         factorial(n)
     with pytest.raises(ValueError):
@@ -39,18 +37,13 @@ def test_factorial_negative_raises_value_error(n: int) -> None:
         (30, 832040),
     ],
 )
-def test_fibo_iterative_and_recursive_match_known_values(n: int, expected: int) -> None:
-    """
-    числа Фибоначчи совпадают
-    и равны заранее известным значениям.
-    """
+def test_fibo(n: int, expected: int) -> None:
     assert fibo(n) == expected
     assert fibo_recursive(n) == expected
 
 
 @pytest.mark.parametrize("n", [-1, -5, -100])
-def test_fibo_negative_raises_value_error(n: int) -> None:
-    """ValueError для отрицательных n."""
+def test_fibo_raises(n: int) -> None:
     with pytest.raises(ValueError):
         fibo(n)
     with pytest.raises(ValueError):

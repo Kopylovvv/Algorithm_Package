@@ -2,6 +2,15 @@ import typer
 
 from src.algopack.stack_list import Stack
 
+from src.algopack.utils.generators import (
+    randint_array,
+    nearly_sorted,
+    many_duplicates,
+    reverse_sorted,
+)
+
+from src.algopack.utils.benchmark import benchmark_sorts
+
 from src.algopack.math_funcs import (
     factorial,
     factorial_recursive,
@@ -18,7 +27,43 @@ from src.algopack.sorting_algorithms import (
     heap_sort
 )
 
-app = typer.Typer(help="Алгоритмический мини-пакет: факториал, Фибоначчи, сортировки.")
+app = typer.Typer(help="Алгоритмический мини-пакет")
+
+
+@app.command("benchmark")
+def benchmark_cmd(
+    size: int = typer.Option(10**4, help="Размер массива"),
+) -> None:
+    """
+    бенчмарк всех сортировок на разных типах данных
+    и вывести времена сортировки в консоль
+    """
+    arrays = {
+        "random": randint_array(size, 0, size),
+        "nearly_sorted": nearly_sorted(size, swaps=max(1, size // 100)),
+        "many_duplicates": many_duplicates(size, k_unique=5),
+        "reverse_sorted": reverse_sorted(size),
+    }
+
+    results = benchmark_sorts(
+        arrays,
+        {
+            "bubble": bubble_sort,
+            "quick": quick_sort,
+            "counting": counting_sort,
+            "radix": radix_sort,
+            "heap": heap_sort,
+            "bucket": bucket_sort,
+        },
+    )
+
+    header = f"{'algo':<8}" + "".join(f"{name:>18}" for name in arrays.keys())
+    typer.echo(header)
+    typer.echo("–" * len(header))
+
+    for algo_name, times in results.items():
+        row = f"{algo_name:<8}" + "".join(f"{times[name]:>18.6f}" for name in arrays.keys())
+        typer.echo(row)
 
 @app.command("factorial")
 def factorial_cmd(
