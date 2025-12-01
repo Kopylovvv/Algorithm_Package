@@ -1,9 +1,6 @@
 from src.algopack.sorting_algorithms.bubble import bubble_sort
 
-
-
 E = 10 ** (-9)
-
 
 
 def bucket_sort(arr: list[float], buckets: int | None = None) -> list[float]:
@@ -38,4 +35,3 @@ def bucket_sort(arr: list[float], buckets: int | None = None) -> list[float]:
         result.extend(sorted_bucket)
 
     return result
-

@@ -27,8 +27,6 @@ def benchmark_sorts(
 
     for algo_name, algo in algos.items():
         for arr_name, arr in arrays.items():
-
             results[algo_name][arr_name] = timeit_once(algo, list(arr))
 
     return results
-

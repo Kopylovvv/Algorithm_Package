@@ -9,7 +9,6 @@ def radix_sort(arr: list[int], base: int = 10) -> list[int]:
     if not arr:
         return []
 
-
     if any(x < 0 for x in arr):
         raise ValueError("radix_sort поддерживает только неотрицательные числа")
 

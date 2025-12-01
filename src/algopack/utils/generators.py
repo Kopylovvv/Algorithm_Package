@@ -2,11 +2,11 @@ import random
 
 
 def randint_array(
-    n: int,
-    lo: int,
-    hi: int,
-    distinct: bool = False,
-    seed: int | None = None,
+        n: int,
+        lo: int,
+        hi: int,
+        distinct: bool = False,
+        seed: int | None = None,
 ) -> list[int]:
     """
     Случайный массив целых чисел из [lo, hi]
@@ -32,9 +32,9 @@ def randint_array(
 
 
 def nearly_sorted(
-    n: int,
-    swaps: int,
-    seed: int | None = None,
+        n: int,
+        swaps: int,
+        seed: int | None = None,
 ) -> list[int]:
     """
     отсортированный массив с swaps изменениями
@@ -58,9 +58,9 @@ def nearly_sorted(
 
 
 def many_duplicates(
-    n: int,
-    k_unique: int = 5,
-    seed: int | None = None,
+        n: int,
+        k_unique: int = 5,
+        seed: int | None = None,
 ) -> list[int]:
     """
     Массив состоящий из конечного числа уникальных элементов
@@ -88,10 +88,10 @@ def reverse_sorted(n: int) -> list[int]:
 
 
 def randfloat_array(
-    n: int,
-    lo: float = 0.0,
-    hi: float = 1.0,
-    seed: int | None = None,
+        n: int,
+        lo: float = 0.0,
+        hi: float = 1.0,
+        seed: int | None = None,
 ) -> list[float]:
     """
     Массив вещественных чисел
@@ -106,4 +106,3 @@ def randfloat_array(
 
     rng = random.Random(seed)
     return [rng.uniform(lo, hi) for _ in range(n)]
-

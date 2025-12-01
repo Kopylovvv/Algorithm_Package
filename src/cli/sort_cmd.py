@@ -17,29 +17,29 @@ from src.algopack.sorting_algorithms import (
 
 
 def sort_cmd(
-    algo: str = typer.Option(
-        "quick",
-        "--algo",
-        "-a",
-        help="Алгоритм: bubble|quick|counting|radix|bucket|heap",
-    ),
-    size: int = typer.Option(
-        100,
-        "--size",
-        "-n",
-        help="Размер массива",
-    ),
-    case: str = typer.Option(
-        "random",
-        "--case",
-        "-c",
-        help="Сценарий генерации: random|nearly_sorted|many_duplicates|reverse",
-    ),
+        algo: str = typer.Option(
+            "quick",
+            "--algo",
+            "-a",
+            help="Алгоритм: bubble|quick|counting|radix|bucket|heap",
+        ),
+        size: int = typer.Option(
+            100,
+            "--size",
+            "-n",
+            help="Размер массива",
+        ),
+        case: str = typer.Option(
+            "random",
+            "--case",
+            "-c",
+            help="Сценарий генерации: random|nearly_sorted|many_duplicates|reverse",
+        ),
 ) -> None:
     """Отсортировать сгенерированный массив и вывести результат."""
     match case:
         case "random":
-            data = randint_array(size, 0, size**2)
+            data = randint_array(size, 0, size ** 2)
         case "nearly_sorted":
             data = nearly_sorted(size, max(1, size // 100))
         case "many_duplicates":

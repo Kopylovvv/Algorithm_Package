@@ -13,5 +13,5 @@ def counting_sort(arr: list[int]) -> list[int]:
     for x in arr:
         counts[x - mn] += 1
 
-    result = [(num+mn) for num, count in enumerate(counts) for _ in range(count)]
+    result = [(num + mn) for num, count in enumerate(counts) for _ in range(count)]
     return result

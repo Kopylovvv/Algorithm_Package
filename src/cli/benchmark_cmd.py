@@ -18,7 +18,7 @@ from src.algopack.sorting_algorithms import (
 
 
 def benchmark_cmd(
-    size: int = typer.Option(10**4, help="Размер массива"),
+        size: int = typer.Option(10 ** 4, help="Размер массива"),
 ) -> None:
     """
     Бенчмарк всех сортировок на разных типах данных
